@@ -1,0 +1,144 @@
+/* src/styles/Checkout.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+}
+.checkout-container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #ddccb8, #cda688);
+  display: flex;
+  flex-direction: column;
+}
+
+.checkout-nav {
+  background: linear-gradient(to right, #885634, #653c24);
+  color: white;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.checkout-nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.checkout-back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  background-color: #4c2517;
+  border-radius: 0.5rem;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout-back-button:hover {
+  background-color: #3c1c12;
+}
+
+.checkout-content {
+  flex: 1;
+  padding: 1.5rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.checkout-card {
+  background-color: #fff8f3;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  color: #4c2517;
+}
+
+.checkout-card h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+}
+
+.checkout-input,
+.checkout-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #cda688;
+  border-radius: 0.5rem;
+  background-color: #fffaf7;
+  color: #4c2517;
+  margin-top: 0.25rem;
+}
+
+.checkout-input:focus,
+.checkout-textarea:focus {
+  outline: none;
+  border-color: #885634;
+  box-shadow: 0 0 0 2px rgba(136, 86, 52, 0.3);
+}
+
+.checkout-order-item {
+  display: flex;
+  gap: 1rem;
+  border-bottom: 1px solid #cda688;
+  padding-bottom: 1rem;
+}
+
+.checkout-icon-box {
+  width: 4rem;
+  height: 4rem;
+  background-color: #cda688;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+}
+
+.checkout-icon {
+  color: #653c24;
+  width: 2rem;
+  height: 2rem;
+}
+
+.checkout-summary {
+  border-top: 1px solid #cda688;
+  padding-top: 1rem;
+  font-weight: 600;
+}
+
+.checkout-button {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #885634;
+  color: white;
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.checkout-button:hover {
+  background-color: #653c24;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

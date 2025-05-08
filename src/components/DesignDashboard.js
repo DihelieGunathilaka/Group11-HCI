@@ -1,92 +1,181 @@
-import React, { useState, useRef } from 'react';
-import { getAuth, signOut } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
-import { LogOut, ChevronDown, ChevronUp, Trash2, RotateCcw, Save, Edit2, ShoppingCart, X, Armchair, Table, Sofa, BookOpen, Tv, Bed, LampFloor } from 'lucide-react';
-import DesignCanvas from './DesignCanvas';
-import Checkout from './Checkout';
+import React, { useState, useRef } from "react";
+import { getAuth, signOut } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
+import {
+  LogOut,
+  ChevronDown,
+  ChevronUp,
+  Trash2,
+  RotateCcw,
+  Save,
+  Edit2,
+  ShoppingCart,
+  X,
+  Armchair,
+  Table,
+  Sofa,
+  BookOpen,
+  Tv,
+  Bed,
+  LampFloor,
+} from "lucide-react";
+import DesignCanvas from "./DesignCanvas";
+import Checkout from "./Checkout";
+import "../styles/DesignDashboard.css"; // Import the CSS file
+import logo from "../assets/logo.png";
 
 const DesignDashboard = ({ designs, setDesigns }) => {
   const predefinedRooms = [
-    { id: 'living-room', name: 'Living Room', width: 12, height: 5, depth: 12, color: '#f0e8d0', wallTexture: 'patterned_concrete_wall_diff_1k.jpg' },
-    { id: 'bedroom', name: 'Bedroom', width: 10, height: 4, depth: 10, color: '#e6e6fa', wallTexture: 'peeling_painted_wall_diff_1k.jpg' },
-    { id: 'dining-room', name: 'Dining Room', width: 14, height: 6, depth: 14, color: '#f5f5f5', wallTexture: 'plaster_brick_pattern_diff_1k.jpg' },
+    {
+      id: "living-room",
+      name: "Living Room",
+      width: 12,
+      height: 5,
+      depth: 12,
+      color: "#f0e8d0",
+      wallTexture: "darkwood.jpg",
+    },
+    {
+      id: "bedroom",
+      name: "Bedroom",
+      width: 10,
+      height: 4,
+      depth: 10,
+      color: "#e6e6fa",
+      wallTexture: "woodenwall.jpg",
+    },
+    {
+      id: "dining-room",
+      name: "Dining Room",
+      width: 14,
+      height: 6,
+      depth: 14,
+      color: "#f5f5f5",
+      wallTexture: "whitewall.jpg",
+    },
+    {
+      id: "car-garage",
+      name: "Car Garage",
+      width: 20,
+      height: 8,
+      depth: 14,
+      color: "#f5f5f5",
+      wallTexture: "stonewall.jpg",
+    },
+    {
+      id: "new-room",
+      name: "New Room",
+      width: 20,
+      height: 8,
+      depth: 14,
+      color: "#f5f5f5",
+      wallTexture: "stonewall.jpg",
+    },
   ];
 
   const wallTextures = [
-    { id: 'patterned_concrete', name: 'Patterned Concrete', file: 'patterned_concrete_wall_diff_1k.jpg' },
-    { id: 'peeling_painted', name: 'Peeling Painted', file: 'peeling_painted_wall_diff_1k.jpg' },
-    { id: 'plaster_brick', name: 'Plaster Brick', file: 'plaster_brick_pattern_diff_1k.jpg' },
-    { id: 'stone_tile', name: 'Stone Tile', file: 'stone_tile_wall_diff_1k.jpg' },
+    {
+      // id: "patterned_concrete",
+      id: "leaftexture",
+      name: "Leaf Texture Wall",
+      file: "leaftexture.jpg",
+    },
+    {
+      id: "graywall",
+      name: "Gray Office Wall",
+      file: "graywall.jpg",
+    },
+    {
+      id: "stonewall",
+      name: "Stone Wall",
+      file: "stonewall.jpg",
+    },
+    {
+      id: "woodenwall",
+      name: "Light Wood Wall",
+      file: "woodenwall.jpg",
+    },
+    {
+      id: "marbleblack",
+      name: "Black Marble Wall",
+      file: "marbleblack.jpeg",
+    },
+    {
+      id: "darkwood",
+      name: "Dark Wood Wall",
+      file: "darkwood.jpg",
+    },
   ];
 
   const productCatalog = [
     {
-      id: 'chair1',
-      type: 'chair',
-      name: 'Modern Wooden Chair',
+      id: "chair1",
+      type: "chair",
+      name: "Wooden Chair",
       price: 129.99,
       icon: Armchair,
-      color: '#8B4513',
+      image: "chair1.jpg",
+      color: "#fff",
       shade: 50,
       scale: 1,
     },
     {
-      id: 'table1',
-      type: 'table',
-      name: 'Oak Dining Table',
+      id: "table1",
+      type: "table",
+      name: "Dining Table",
       price: 349.99,
       icon: Table,
-      color: '#8B4513',
+      color: "#fff",
       shade: 50,
       scale: 1,
     },
     {
-      id: 'sofa1',
-      type: 'sofa',
-      name: 'Velvet Sofa',
+      id: "sofa1",
+      type: "sofa",
+      name: "Sofa",
       price: 799.99,
       icon: Sofa,
-      color: '#4B0082',
+      color: "#fff",
       shade: 30,
       scale: 1,
     },
     {
-      id: 'bookshelf1',
-      type: 'bookshelf',
-      name: 'Tall Bookshelf',
+      id: "bookshelf1",
+      type: "bookshelf",
+      name: "Bookshelf",
       price: 249.99,
       icon: BookOpen,
-      color: '#8B4513',
+      color: "#fff",
       shade: 50,
       scale: 1,
     },
     {
-      id: 'tvstand1',
-      type: 'tvstand',
-      name: 'Sleek TV Stand',
+      id: "tvstand1",
+      type: "tvstand",
+      name: "Sleek TV Stand",
       price: 299.99,
       icon: Tv,
-      color: '#2F4F4F',
+      color: "#fff",
       shade: 50,
       scale: 1,
     },
     {
-      id: 'bed1',
-      type: 'bed',
-      name: 'Cozy Double Bed',
+      id: "bed1",
+      type: "bed",
+      name: "Double Bed",
       price: 649.99,
       icon: Bed,
-      color: '#4682B4',
+      color: "#fff",
       shade: 30,
       scale: 1,
     },
     {
-      id: 'lamp1',
-      type: 'lamp',
-      name: 'Golden Floor Lamp',
+      id: "lamp1",
+      type: "lamp",
+      name: "Floor Lamp",
       price: 179.99,
       icon: LampFloor,
-      color: '#FFD700',
+      color: "#fff",
       shade: 70,
       scale: 1,
     },
@@ -94,7 +183,7 @@ const DesignDashboard = ({ designs, setDesigns }) => {
 
   const [room, setRoom] = useState(predefinedRooms[0]);
   const [furniture, setFurniture] = useState([]);
-  const [viewMode, setViewMode] = useState('3D');
+  const [viewMode, setViewMode] = useState("3D");
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [showCheckout, setShowCheckout] = useState(false);
@@ -149,10 +238,16 @@ const DesignDashboard = ({ designs, setDesigns }) => {
     setFurniture([...furniture, newItem]);
     addToCart(product);
     if (catalogRef.current) {
-      catalogRef.current.scrollTo({ top: catalogRef.current.scrollHeight, behavior: 'smooth' });
+      catalogRef.current.scrollTo({
+        top: catalogRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     }
     if (furnitureSettingsRef.current) {
-      furnitureSettingsRef.current.scrollTo({ top: furnitureSettingsRef.current.scrollHeight, behavior: 'smooth' });
+      furnitureSettingsRef.current.scrollTo({
+        top: furnitureSettingsRef.current.scrollHeight,
+        behavior: "smooth",
+      });
     }
   };
 
@@ -161,7 +256,9 @@ const DesignDashboard = ({ designs, setDesigns }) => {
     if (existingItem) {
       setCart(
         cart.map((item) =>
-          item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + 1 }
+            : item
         )
       );
     } else {
@@ -213,58 +310,79 @@ const DesignDashboard = ({ designs, setDesigns }) => {
   const resetDesign = () => {
     setFurniture([]);
     setRoom(predefinedRooms[0]);
-    setViewMode('3D');
+    setViewMode("3D");
   };
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      console.error('Logout error:', error.message);
+      console.error("Logout error:", error.message);
     }
   };
 
-  const totalCartPrice = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+  const totalCartPrice = cart.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0
+  );
 
   if (showCheckout) {
-    return <Checkout cart={cart} setCart={setCart} setShowCheckout={setShowCheckout} />;
+    return (
+      <Checkout
+        cart={cart}
+        setCart={setCart}
+        setShowCheckout={setShowCheckout}
+      />
+    );
   }
 
+  // **********************************************************************
+  // **********************************************************************
+  // **********************************************************************
+  // **********************************************************************
+
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 flex flex-col">
-      <nav className="bg-gradient-to-r from-teal-600 to-teal-800 text-white p-4 shadow-lg sticky top-0 z-20">
-        <div className="container mx-auto flex justify-between items-center">
-          <h1 className="text-2xl font-extrabold tracking-tight">Furniture Design Studio for Desginers</h1>
-          <div className="flex items-center gap-4">
+    <div className="custom-container">
+      {/* Navbar */}
+      <nav className="custom-navbar">
+        <div className="custom-container2">
+          <img src={logo} alt="Furniture Logo" className="custom-logo" />
+          <h1 className="heading">InteraVis Design Studio for Designers</h1>
+          <div className="custom-container3">
             <button
               onClick={() => setShowCart(!showCart)}
-              className="flex items-center gap-2 px-4 py-2 bg-teal-900 hover:bg-teal-950 rounded-lg transition-all duration-300"
+              className="custom-button"
             >
-              <ShoppingCart className="w-5 h-5" />
-              <span className="hidden sm:inline">Cart ({cart.reduce((sum, item) => sum + item.quantity, 0)})</span>
+              <ShoppingCart className="custom-icon" />
+              <span className="custom-visible">
+                Cart ({cart.reduce((sum, item) => sum + item.quantity, 0)})
+              </span>
             </button>
-            <button
-              onClick={handleLogout}
-              className="flex items-center gap-2 px-4 py-2 bg-teal-900 hover:bg-teal-950 rounded-lg transition-all duration-300"
-            >
-              <LogOut className="w-5 h-5" />
-              <span className="hidden sm:inline">Logout</span>
+            <button onClick={handleLogout} className="custom-logout-button">
+              <LogOut className="custom-icon" />
+              <span className="custom-text">Logout</span>
             </button>
           </div>
         </div>
       </nav>
+      {/* Navbar End */}
 
-      <div className="container mx-auto flex-1 p-6 overflow-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-          <div className="lg:col-span-1 bg-gray-800 rounded-2xl shadow-xl p-6 space-y-6">
+      <div className="containersub">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="custom-card">
+            {/* Room Settings */}
             <div>
               <button
-                onClick={() => toggleSection('room')}
-                className="w-full flex justify-between items-center text-lg font-semibold text-gray-100 hover:text-teal-400 transition-colors"
+                onClick={() => toggleSection("room")}
+                className="toggle-button"
               >
                 Room Settings
-                {expandedSections.room ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                {expandedSections.room ? (
+                  <ChevronUp className="w-5 h-5" />
+                ) : (
+                  <ChevronDown className="w-5 h-5" />
+                )}
               </button>
               {expandedSections.room && (
                 <div className="mt-4 space-y-4 animate-fadeIn">
@@ -294,50 +412,88 @@ const DesignDashboard = ({ designs, setDesigns }) => {
                     type="number"
                     placeholder="Width (m)"
                     value={room.width}
-                    onChange={(e) => setRoom({ ...room, width: validateDimension(e.target.value) })}
+                    onChange={(e) =>
+                      setRoom({
+                        ...room,
+                        width: validateDimension(e.target.value),
+                      })
+                    }
                     className="w-full p-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-gray-700 text-gray-100"
                   />
                   <input
                     type="number"
                     placeholder="Height (m)"
                     value={room.height}
-                    onChange={(e) => setRoom({ ...room, height: validateDimension(e.target.value) })}
+                    onChange={(e) =>
+                      setRoom({
+                        ...room,
+                        height: validateDimension(e.target.value),
+                      })
+                    }
                     className="w-full p-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-gray-700 text-gray-100"
                   />
                   <input
                     type="number"
                     placeholder="Depth (m)"
                     value={room.depth}
-                    onChange={(e) => setRoom({ ...room, depth: validateDimension(e.target.value) })}
+                    onChange={(e) =>
+                      setRoom({
+                        ...room,
+                        depth: validateDimension(e.target.value),
+                      })
+                    }
                     className="w-full p-3 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-gray-700 text-gray-100"
                   />
                   <input
                     type="color"
                     value={room.color}
-                    onChange={(e) => setRoom({ ...room, color: e.target.value })}
+                    onChange={(e) =>
+                      setRoom({ ...room, color: e.target.value })
+                    }
                     className="w-full h-12 rounded-lg cursor-pointer"
                   />
                 </div>
               )}
             </div>
 
+            {/*************************************************************************/}
+            {/*************************************************************************/}
+            {/*************************************************************************/}
+
+            {/* Product Catalog */}
             <div>
               <button
-                onClick={() => toggleSection('catalog')}
-                className="w-full flex justify-between items-center text-lg font-semibold text-gray-100 hover:text-teal-400 transition-colors"
+                onClick={() => toggleSection("catalog")}
+                className="toggle-button"
               >
                 Product Catalog
-                {expandedSections.catalog ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                {expandedSections.catalog ? (
+                  <ChevronUp className="w-5 h-5" />
+                ) : (
+                  <ChevronDown className="w-5 h-5" />
+                )}
               </button>
               {expandedSections.catalog && (
-                <div className="mt-4 space-y-4 animate-fadeIn max-h-[500px] overflow-y-auto" ref={catalogRef}>
+                <div
+                  className="mt-4 space-y-4 animate-fadeIn max-h-[500px] overflow-y-auto"
+                  ref={catalogRef}
+                >
                   {productCatalog.map((product) => (
-                    <div key={product.id} className="p-4 bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                    <div
+                      key={product.id}
+                      className="p-4 bg-gray-700 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+                    >
                       <div className="w-full h-32 flex items-center justify-center bg-gray-600 rounded-lg mb-2">
-                        {React.createElement(product.icon, { className: 'w-16 h-16 text-teal-400' })}
+                        {React.createElement(product.icon, {
+                          className: "w-16 h-16 text-teal-400",
+                        })}
                       </div>
-                      <p className="font-medium text-gray-100">{product.name}</p>
-                      <p className="text-gray-400">${product.price.toFixed(2)}</p>
+                      <p className="font-medium text-gray-100">
+                        {product.name}
+                      </p>
+                      <p className="text-gray-400">
+                        ${product.price.toFixed(2)}
+                      </p>
                       <button
                         onClick={() => addFurniture(product)}
                         className="w-full p-2 mt-2 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 flex items-center justify-center gap-2"
@@ -350,18 +506,32 @@ const DesignDashboard = ({ designs, setDesigns }) => {
               )}
             </div>
 
+            {/*************************************************************************/}
+            {/*************************************************************************/}
+            {/*************************************************************************/}
+
+            {/* Furniture Settings */}
             <div>
               <button
-                onClick={() => toggleSection('furnitureSettings')}
-                className="w-full flex justify-between items-center text-lg font-semibold text-gray-100 hover:text-teal-400 transition-colors"
+                onClick={() => toggleSection("furnitureSettings")}
+                className="toggle-button"
               >
                 Furniture Settings
-                {expandedSections.furnitureSettings ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                {expandedSections.furnitureSettings ? (
+                  <ChevronUp className="w-5 h-5" />
+                ) : (
+                  <ChevronDown className="w-5 h-5" />
+                )}
               </button>
               {expandedSections.furnitureSettings && (
-                <div className="mt-4 space-y-4 animate-fadeIn max-h-[500px] overflow-y-auto" ref={furnitureSettingsRef}>
+                <div
+                  className="mt-4 space-y-4 animate-fadeIn max-h-[500px] overflow-y-auto"
+                  ref={furnitureSettingsRef}
+                >
                   {furniture.length === 0 ? (
-                    <p className="text-gray-400 text-center">No furniture added.</p>
+                    <p className="text-gray-400 text-center">
+                      No furniture added.
+                    </p>
                   ) : (
                     furniture.map((item, index) => (
                       <div
@@ -376,7 +546,9 @@ const DesignDashboard = ({ designs, setDesigns }) => {
                           placeholder="X Position (m)"
                           value={item.x || 0}
                           onChange={(e) =>
-                            updateFurniture(index, { x: parseFloat(e.target.value) || 0 })
+                            updateFurniture(index, {
+                              x: parseFloat(e.target.value) || 0,
+                            })
                           }
                           className="w-full p-3 mt-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-gray-700 text-gray-100"
                         />
@@ -385,7 +557,9 @@ const DesignDashboard = ({ designs, setDesigns }) => {
                           placeholder="Z Position (m)"
                           value={item.z || 0}
                           onChange={(e) =>
-                            updateFurniture(index, { z: parseFloat(e.target.value) || 0 })
+                            updateFurniture(index, {
+                              z: parseFloat(e.target.value) || 0,
+                            })
                           }
                           className="w-full p-3 mt-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-gray-700 text-gray-100"
                         />
@@ -396,14 +570,18 @@ const DesignDashboard = ({ designs, setDesigns }) => {
                           min="0.1"
                           step="0.1"
                           onChange={(e) =>
-                            updateFurniture(index, { scale: parseFloat(e.target.value) || 1 })
+                            updateFurniture(index, {
+                              scale: parseFloat(e.target.value) || 1,
+                            })
                           }
                           className="w-full p-3 mt-2 border border-gray-600 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 transition-all bg-gray-700 text-gray-100"
                         />
                         <input
                           type="color"
                           value={item.color}
-                          onChange={(e) => updateFurniture(index, { color: e.target.value })}
+                          onChange={(e) =>
+                            updateFurniture(index, { color: e.target.value })
+                          }
                           className="w-full h-12 mt-2 rounded-lg cursor-pointer"
                         />
                         <input
@@ -412,7 +590,9 @@ const DesignDashboard = ({ designs, setDesigns }) => {
                           max="100"
                           value={item.shade || 50}
                           onChange={(e) =>
-                            updateFurniture(index, { shade: parseFloat(e.target.value) })
+                            updateFurniture(index, {
+                              shade: parseFloat(e.target.value),
+                            })
                           }
                           className="w-full mt-2 accent-teal-500"
                         />
@@ -423,32 +603,41 @@ const DesignDashboard = ({ designs, setDesigns }) => {
               )}
             </div>
 
+            {/*************************************************************************/}
+            {/*************************************************************************/}
+            {/*************************************************************************/}
+
+            {/* View Mode */}
             <div>
               <button
-                onClick={() => toggleSection('viewMode')}
-                className="w-full flex justify-between items-center text-lg font-semibold text-gray-100 hover:text-teal-400 transition-colors"
+                onClick={() => toggleSection("viewMode")}
+                className="toggle-button"
               >
                 View Mode
-                {expandedSections.viewMode ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                {expandedSections.viewMode ? (
+                  <ChevronUp className="w-5 h-5" />
+                ) : (
+                  <ChevronDown className="w-5 h-5" />
+                )}
               </button>
               {expandedSections.viewMode && (
                 <div className="mt-4 space-y-3 animate-fadeIn">
                   <button
-                    onClick={() => setViewMode('2D')}
+                    onClick={() => setViewMode("2D")}
                     className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${
-                      viewMode === '2D'
-                        ? 'bg-teal-500 text-white'
-                        : 'bg-gray-700 text-gray-100 hover:bg-gray-600'
+                      viewMode === "2D"
+                        ? "bg-teal-500 text-white"
+                        : "bg-gray-700 text-gray-100 hover:bg-gray-600"
                     }`}
                   >
                     2D View
                   </button>
                   <button
-                    onClick={() => setViewMode('3D')}
+                    onClick={() => setViewMode("3D")}
                     className={`w-full p-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 ${
-                      viewMode === '3D'
-                        ? 'bg-teal-500 text-white'
-                        : 'bg-gray-700 text-gray-100 hover:bg-gray-600'
+                      viewMode === "3D"
+                        ? "bg-teal-500 text-white"
+                        : "bg-gray-700 text-gray-100 hover:bg-gray-600"
                     }`}
                   >
                     3D View
@@ -457,17 +646,18 @@ const DesignDashboard = ({ designs, setDesigns }) => {
               )}
             </div>
 
+            {/* Buttons */}
             <div className="flex gap-3">
               <button
                 onClick={saveDesign}
-                className="flex-1 p-3 bg-teal-500 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 flex items-center justify-center gap-2"
+                className="flex-1 p-3 bg-teal-800 text-white rounded-lg hover:bg-teal-600 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <Save className="w-5 h-5" />
                 Save
               </button>
               <button
                 onClick={resetDesign}
-                className="flex-1 p-3 bg-rose-500 text-white rounded-lg hover:bg-rose-600 transition-all duration-300 flex items-center justify-center gap-2"
+                className="flex-1 p-3 bg-rose-800 text-white rounded-lg hover:bg-rose-600 transition-all duration-300 flex items-center justify-center gap-2"
               >
                 <RotateCcw className="w-5 h-5" />
                 Reset
@@ -475,9 +665,17 @@ const DesignDashboard = ({ designs, setDesigns }) => {
             </div>
           </div>
 
-          <div className="lg:col-span-3 bg-gray-800 rounded-2xl shadow-xl p-6">
-            <h2 className="text-xl font-semibold text-gray-100 mb-4">Design Canvas</h2>
-            <div className="w-full h-[600px] rounded-lg overflow-hidden">
+          {/* ***********************************************************************/}
+          {/* ***********************************************************************/}
+          {/* ***********************************************************************/}
+
+          {/* Design Canvas */}
+
+          <div className="lg:col-span-3 rounded-2xl shadow-xl p-8">
+            <h2 className="text-xl font-semibold text-black mb-4">
+              Design Canvas
+            </h2>
+            <div className="w-full h-[1500px] rounded-lg overflow-hidden">
               <DesignCanvas
                 room={room}
                 furniture={furniture}
@@ -486,12 +684,22 @@ const DesignDashboard = ({ designs, setDesigns }) => {
               />
             </div>
           </div>
+          {/* Design Canvas */}
         </div>
 
-        <div className="mt-6 bg-gray-800 rounded-2xl shadow-xl p-6">
-          <h2 className="text-xl font-semibold text-gray-100 mb-4">Saved Designs</h2>
+        {/*************************************************************************/}
+        {/*************************************************************************/}
+        {/*************************************************************************/}
+
+        {/* Saved Changes */}
+        <div className="mt-6 rounded-2xl shadow-xl p-8">
+          <h2 className="text-xl font-semibold text-black mb-4">
+            Saved Designs
+          </h2>
           {designs.length === 0 ? (
-            <p className="text-gray-400 text-center">No designs saved yet.</p>
+            <p className="text-gray-600 font-semibold text-center">
+              No designs saved yet.
+            </p>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {designs.map((design) => (
@@ -502,7 +710,9 @@ const DesignDashboard = ({ designs, setDesigns }) => {
                   <div className="w-full h-40 bg-gray-600 rounded-lg mb-3 flex items-center justify-center">
                     <p className="text-gray-400">{design.room.name} Preview</p>
                   </div>
-                  <p className="font-medium text-gray-100 truncate">{design.name}</p>
+                  <p className="font-medium text-gray-100 truncate">
+                    {design.name}
+                  </p>
                   <div className="flex gap-2 mt-3">
                     <button
                       onClick={() => editDesign(design)}
@@ -525,10 +735,16 @@ const DesignDashboard = ({ designs, setDesigns }) => {
           )}
         </div>
 
+        {/*************************************************************************/}
+        {/*************************************************************************/}
+
+        {/* Cart */}
         {showCart && (
           <div className="fixed inset-y-0 right-0 w-full sm:w-96 bg-gray-800 shadow-xl p-6 overflow-auto z-30 animate-slideIn">
             <div className="flex justify-between items-center mb-4">
-              <h2 className="text-xl font-semibold text-gray-100">Shopping Cart</h2>
+              <h2 className="text-xl font-semibold text-gray-100">
+                Shopping Cart
+              </h2>
               <button
                 onClick={() => setShowCart(false)}
                 className="p-2 hover:bg-gray-700 rounded-full transition-all duration-300"
@@ -541,23 +757,32 @@ const DesignDashboard = ({ designs, setDesigns }) => {
             ) : (
               <div className="space-y-4">
                 {cart.map((item) => (
-                  <div key={item.id} className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg">
+                  <div
+                    key={item.id}
+                    className="flex items-center gap-4 p-4 bg-gray-700 rounded-lg"
+                  >
                     <div className="w-16 h-16 flex items-center justify-center bg-gray-600 rounded-lg">
-                      {React.createElement(item.icon, { className: 'w-8 h-8 text-teal-400' })}
+                      {React.createElement(item.icon, {
+                        className: "w-8 h-8 text-teal-400",
+                      })}
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-gray-100">{item.name}</p>
                       <p className="text-gray-400">${item.price.toFixed(2)}</p>
                       <div className="flex items-center gap-2 mt-1">
                         <button
-                          onClick={() => updateCartQuantity(item.id, item.quantity - 1)}
+                          onClick={() =>
+                            updateCartQuantity(item.id, item.quantity - 1)
+                          }
                           className="p-1 bg-gray-600 rounded hover:bg-gray-500 transition-all duration-300"
                         >
                           -
                         </button>
                         <span className="text-gray-100">{item.quantity}</span>
                         <button
-                          onClick={() => updateCartQuantity(item.id, item.quantity + 1)}
+                          onClick={() =>
+                            updateCartQuantity(item.id, item.quantity + 1)
+                          }
                           className="p-1 bg-gray-600 rounded hover:bg-gray-500 transition-all duration-300"
                         >
                           +
@@ -595,8 +820,12 @@ const DesignDashboard = ({ designs, setDesigns }) => {
         {showDeleteConfirm && (
           <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
             <div className="bg-gray-800 rounded-2xl p-6 max-w-sm w-full animate-fadeIn">
-              <h3 className="text-xl font-semibold text-gray-100 mb-4">Confirm Delete</h3>
-              <p className="text-gray-400 mb-6">Are you sure you want to delete this design?</p>
+              <h3 className="text-xl font-semibold text-gray-100 mb-4">
+                Confirm Delete
+              </h3>
+              <p className="text-gray-400 mb-6">
+                Are you sure you want to delete this design?
+              </p>
               <div className="flex gap-3">
                 <button
                   onClick={() => setShowDeleteConfirm(null)}

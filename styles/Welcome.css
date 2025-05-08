@@ -1,0 +1,206 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: linear-gradient(135deg, #efe9db, #e0d5bf);
+  min-height: 100vh;
+  color: #f4e8d9;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.2rem 2rem;
+  background-color: transparent;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.logo-image {
+  height: 200px;
+  width: auto;
+  margin-left: 50px;
+  margin-top: 50px;
+}
+
+.navbar-logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.navbar-links {
+  list-style: none;
+  display: flex;
+  gap: 4rem;
+  margin: 0;
+}
+
+.navbar-links a {
+  text-decoration: none;
+  font-weight: 800;
+  color: #8d765b;
+  transition: color 0.3s;
+}
+
+.navbar-links a:hover {
+  color: #000;
+}
+
+.nav-button {
+  background-color: #ceb79b;
+  color: white;
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-weight: 600;
+  transition: background-color 0.3s;
+}
+
+.nav-button:hover {
+  background-color: #8d765b;
+}
+
+/* Main container offset */
+.welcome-container {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+/* Welcome Section */
+.welcome-card {
+  background-color: #fffaf0;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto 3rem;
+  color: #8d765b;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.03);
+}
+
+.welcome-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #4b3b2f;
+  margin-bottom: 1rem;
+}
+
+.welcome-title span {
+  color: #8d765b;
+}
+
+.welcome-subtitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #6e5a45;
+}
+
+.welcome-text {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #5a4a3a;
+}
+
+.welcome-button {
+  background-color: #ceb79b;
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border-radius: 30px;
+  border: none;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.welcome-button:hover {
+  background-color: #8d765b;
+}
+
+/* About Us Section */
+.aboutus-container {
+  background-color: #fffaf0;
+  padding: 4rem 2rem;
+  color: #8d765b;
+  margin-top: 10px;
+}
+
+.aboutus-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.aboutus-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #4b3b2f;
+}
+
+.aboutus-subtitle {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: #fff;
+  font-style: italic;
+}
+
+.aboutus-text {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  color: #5a4a3a;
+}
+
+/* CTA Section */
+.cta-container {
+  background: linear-gradient(135deg, #e0d5bf, #ceb79b);
+  text-align: center;
+  padding: 3rem 2rem;
+  color: #4b3b2f;
+  margin: 4rem auto;
+  border-radius: 20px;
+  max-width: 800px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-top: 10px;
+}
+
+.cta-heading {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #4b3b2f;
+}
+
+.cta-subtext {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  color: #5a4a3a;
+}
+
+.cta-button {
+  padding: 0.75rem 2rem;
+  background-color: #8d765b;
+  color: white;
+  font-weight: bold;
+  font-size: large;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.cta-button:hover {
+  background-color: #7a644c;
+}

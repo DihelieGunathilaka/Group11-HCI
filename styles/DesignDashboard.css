@@ -1,0 +1,149 @@
+/* src/styles/DesignCanvas.css */
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: linear-gradient(135deg, #ddccb8, #f9fafb);
+  min-height: 100vh;
+}
+
+.maincontainer {
+  min-height: 80vh;
+  background: linear-gradient(to bottom, #fff, #e6ccb2);
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px; /* Adjust this value according to the height of your navbar */
+}
+
+/* Navbar Start */
+.custom-navbar {
+  display: flex;
+  padding: 50px;
+  justify-content: space-between;
+  background-color: #fff;
+  color: #8a5b3e;
+}
+
+.custom-container2 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.custom-logo {
+  height: 90px;
+  width: auto;
+  margin-right: 10px;
+}
+
+.heading {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.custom-container3 {
+  display: flex;
+  align-items: center; /* items-center */
+  gap: 1rem;
+  font-weight: 800; /* gap-4 */
+}
+
+.custom-button {
+  display: flex;
+  align-items: center; /* items-center */
+  gap: 0.5rem; /* gap-2 */
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  background-color: #f2d9c3; /* bg-teal-900 */
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 0.3s ease; /* transition-all duration-300 */
+}
+
+.custom-button:hover {
+  background-color: #c8a48a; /* hover:bg-teal-950 */
+}
+
+.custom-icon {
+  width: 1.25rem; /* w-5 */
+  height: 1.25rem; /* h-5 */
+}
+
+.custom-visible {
+  display: none; /* hidden */
+}
+
+@media (min-width: 640px) {
+  .custom-visible {
+    display: inline; /* sm:inline */
+  }
+}
+
+.custom-logout-button {
+  display: flex;
+  align-items: center; /* items-center */
+  gap: 0.5rem; /* gap-2 */
+  padding: 0.5rem 1rem; /* px-4 py-2 */
+  background-color: #f2d9c3;
+  border-radius: 0.5rem; /* rounded-lg */
+  transition: all 0.3s ease; /* transition-all duration-300 */
+}
+
+.custom-logout-button:hover {
+  background-color: #c8a48a; /* hover:bg-teal-950 */
+}
+
+.custom-icon {
+  width: 1.25rem; /* w-5 */
+  height: 1.25rem; /* h-5 */
+}
+
+.custom-text {
+  display: none; /* hidden */
+}
+
+@media (min-width: 640px) {
+  .custom-text {
+    display: inline; /* sm:inline */
+  }
+}
+
+/* Navbar End */
+
+.containersub {
+  background-color: #fff; /* Light color from the theme */
+  color: #000;
+  padding: 3rem; /* p-6 equivalent */
+  overflow: auto; /* Keeps overflow behavior */
+}
+
+.custom-card {
+  background-color: #fff; /* Dark gray background, similar to bg-gray-800 */
+  border-radius: 1rem; /* Rounded corners for a "rounded-2xl" effect */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08); /* Shadow for "shadow-xl" */
+  padding: 1rem; /* Equivalent to p-6 */
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Equivalent to space-y-6 */
+}
+
+@media (min-width: 1024px) {
+  .custom-card {
+    grid-column: span 1; /* Equivalent to lg:col-span-1 */
+  }
+}
+
+.toggle-button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.125rem; /* text-lg */
+  font-weight: 600; /* font-semibold */
+  color: #1b1c1c; /* light text from your theme */
+  transition: color 0.3s ease;
+}
+
+.toggle-button:hover {
+  color: #c9a27b; /* soft highlight from your theme */
+}

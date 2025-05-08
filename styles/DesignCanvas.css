@@ -1,0 +1,29 @@
+/* src/styles/DesignCanvas.css */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap");
+
+/* DesignCanvas.css */
+.design-canvas-container {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5; /* or dark background depending on your theme */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Segoe UI", sans-serif;
+}
+
+.design-canvas-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.design-canvas-wrapper {
+  width: 90%;
+  height: 80%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+}

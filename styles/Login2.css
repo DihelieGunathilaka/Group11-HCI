@@ -1,0 +1,147 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+body {
+  margin: 0;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  background: linear-gradient(135deg, #ddccb8, #f9fafb);
+  min-height: 100vh;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-box {
+  background: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 12px 40px rgba(76, 37, 23, 0.12); /* soft brown shadow */
+  width: 100%;
+  max-width: 440px;
+  transition: transform 0.2s ease;
+}
+
+.login-box:hover {
+  transform: translateY(-3px);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.logo-img {
+  width: 6.5rem;
+  height: 6.5rem;
+  border-radius: 50%;
+  background-color: #ddccb8;
+  padding: 0.8rem;
+  box-shadow: 0 4px 12px rgba(76, 37, 23, 0.25);
+  border: 3px solid #cda688;
+  object-fit: contain;
+}
+
+.login-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: #4c2517;
+  margin-bottom: 0.3rem;
+  letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+  font-size: 1rem;
+  font-weight: 800;
+  text-align: center;
+  color: #885634;
+  margin-bottom: 1.8rem;
+}
+
+.login-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #653c24;
+  margin-bottom: 0.35rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  border: 1px solid #cda688;
+  border-radius: 0.6rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 0.95rem;
+  background-color: #fdfaf8;
+  transition: all 0.25s ease;
+}
+
+.form-input:focus {
+  border-color: #885634;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(136, 86, 52, 0.2);
+  outline: none;
+}
+
+.login-button {
+  width: 100%;
+  padding: 0.75rem;
+  background: linear-gradient(to right, #885634, #653c24);
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  border-radius: 0.6rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.login-button:hover {
+  background: linear-gradient(to right, #653c24, #4c2517);
+  transform: scale(1.01);
+}
+
+.register-text {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  text-align: center;
+  color: #885634;
+}
+
+.register-link {
+  color: #653c24;
+  font-weight: 500;
+  text-decoration: none;
+  margin-left: 0.3rem;
+  transition: color 0.2s ease;
+}
+
+.register-link:hover {
+  color: #4c2517;
+  text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+  .login-box {
+    padding: 2rem 1.5rem;
+  }
+
+  .login-title {
+    font-size: 1.5rem;
+  }
+
+  .logo-img {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+}
