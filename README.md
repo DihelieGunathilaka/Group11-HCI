@@ -5,7 +5,8 @@
 
 This repository contains our team’s submission for the module PUSL 3122 - HCI, Computer Graphics, and Visualisation. The coursework involves developing an interactive software solution following the principles of UI/UX design and computer graphics, in response to a scenario detailed in the module brief.
 
-This project showcases our application of HCI principles using the Agile software development life cycle, with a focus on the Scrum methodology.
+This project showcases our application of HCI principles using the Agile and Scrum methodologies.
+
 
 ---
 
@@ -21,10 +22,14 @@ This project showcases our application of HCI principles using the Agile softwar
 
 ## Features & Technologies
 
-- **Programming Language:** Java (Swing API + integrated computer graphics library)
-- **Prototyping Tools:** Figma (Low-fidelity & High-fidelity designs)
-- **Development Methodology:** Agile (Scrum)
-- **UI/UX Design Concepts:** Based on usability goals, principles, and design heuristics
+- Programming Language: Java (Swing API + integrated computer graphics library), React (for the interface)
+- Graphics & 3D Rendering: React Three Fiber, Three.js
+- Backend & Authentication: Firebase (authentication and backend services)
+- Routing & Navigation: React Router
+- Iconography: Lucide React
+- Prototyping Tools: Figma (Low-fidelity & High-fidelity designs)
+- Development Methodology: Agile (Scrum)
+- UI/UX Design Concepts: Based on usability goals, principles, and design heuristics
 
 ---
 
@@ -42,8 +47,10 @@ This project showcases our application of HCI principles using the Agile softwar
 - UI/UX guided by feedback from initial user evaluations
 
 ### 3. Implementation
-- Developed the interactive application using Java Swing
-- Incorporated graphics elements as per the scenario requirements
+- Developed the interactive application using React, React Three Fiber, and Three.js
+- Incorporated 2D and 3D graphics elements as per the scenario requirements
+- Implemented Firebase for authentication and backend services
+- Used React Router for navigation and Lucide React for iconography
 - Iteratively refined UI based on feedback and user testing
 
 ### 4. Evaluation
@@ -62,13 +69,8 @@ This project showcases our application of HCI principles using the Agile softwar
 
 ---
 
-## 📷 Design Snapshots
 
-- Low-fidelity Prototypes (Sketches)
-- High-fidelity Screenshots (from Figma)
-- Storyboards illustrating use-case scenarios
 
-> 📄 All design visuals are also included in the final PDF report.
 
 ---
 
